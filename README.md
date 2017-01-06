@@ -1,2 +1,2 @@
 # HomebrewTitleIDGenerator
-A simple generator for 3DS Homebrew TitleIDs while checking that you don't conflict with other Homebrew apps.
+You can find the source in the gh-pages branch of this git!
