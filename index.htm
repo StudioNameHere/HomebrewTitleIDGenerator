@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <!-- Metatags -->
+      <meta charset="utf-8" />
+      <title>HomebrewTitleIDGenerator</title>
+      
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      
+      <!-- Stylesheets -->
+      <link rel="stylesheet" href="assets/css/reset.css" />
+      <link rel="stylesheet" href="assets/css/grid.css" />
+      <link rel="stylesheet" href="assets/css/style.css" />
+      
+      <!-- Javascripts -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+      <script src="assets/js/app.js"></script>
+    </head>
+    <body>
+      <header>
+        <div class="brand">HomebrewTitleID<span>Generator</span></div>
+      </header>
+      
+      <section data-section="content">
+        <div class="container">
+          <div class="col-md-3"></div>
+          <div class="col-md-6">
+            <div class="content-box">
+              <h1>Check your Homebrew TitleID</h1>
+              <button id="checkID">Check</button>
+              <input type="text" placeholder="000400000D921E00" name="checkTitleID" />
+              
+              <div class="response_failed">
+                <span>You're good!</span><br />
+                We couldn't find any Homebrew Apps with that ID!
+              </div>
+              <div class="response_success">
+                <span>This TitleID is already in use</span><br />
+                <img src="" class="foundAppImage" alt="App Icon" />
+                <strong><div class="foundAppTitle"></div></strong>
+                <em><div class="foundAppDev"></div></em>
+              </div>
+            </div>
+            
+            <div class="content-box">
+              <h1>Here's an unused Homebrew TitleID</h1>
+              <button id="reloadTitleID">Generate</button>
+              <div class="unusedTitleID">Loading...</div>
+            </div>
+            
+            <div class="content-box">
+              <h1>What?</h1>
+              <p>A TitleID is a unique identifier of your Homebrew Application. It defines your app without the need of checking your Title or Description so these don't have to be unqiue (there can be multiple applications with the same name). TitleDB.com tries to prevent conflicts with multiple TitleIDs by maintaining a big database of all Homebrew Applications and their TitleIDs. This website is a small tool to generate a conflict-free TitleID and check if a TitleID is already in use.</p>
+            </div>
+            
+            <div class="content-box">
+              <h1>What to do next?</h1>
+              <p>You can use the TitleDB for your own Homebrew Application. As soon as you finished development, you should push your CIA or ZIP to <strong>titledb.com</strong> to be added to the database!</p>
+            </div>
+            
+            <div class="content-box">
+              <h1>Credits</h1>
+              <p>
+                <strong>Andreas Heimenn</strong><br />
+                <em>Development, Design</em><br /><br />
+                
+                <strong>TitleDB.com</strong><br />
+                <em>API</em>
+              </p>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </section>
+    </body>
+  </html>
