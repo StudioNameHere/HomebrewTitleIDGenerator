@@ -51,11 +51,16 @@ $(document).ready(function() {
       
       // Show Box
       $(".response_success").slideDown();
-    } else {
-      // Found nothing
+    } else if (titleID.length === 16 
+               && titleID.substring(0, 8) === "00040000"
+               && titleID.substring(14) === "00"
+               && parseInt(titleID.substring(8, 14)) > 0x2FF) {
       $(".response_failed").slideDown();
+    } else {
+      $(".response_invalid").slideDown();
     }
   }
+  
   function pad(n, width, z) {
     z = z || '0';
     n = n + '';
