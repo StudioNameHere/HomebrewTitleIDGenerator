@@ -98,7 +98,6 @@ $(document).ready(function() {
     if($.inArray(titleID, Object.keys(eShopTitleIds)) > -1) {
       // Found Id
       $.each(eShopLanguageBias, function(key, language){
-        console.debug(language);
         if(eShopTitleIds[titleID].languages.indexOf(language) != -1) {
           $.getJSON(nusInfoBaseUrl + "titles/" + (titleID + "-" + language).toLowerCase() + ".json", function( data ) {
             // Found Id
