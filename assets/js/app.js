@@ -98,12 +98,14 @@ $(document).ready(function() {
     
     if(titleID.length <= 8) {
       
-      if(titleID.substr(-2) != titleIDPost) {
+      if(titleID.length <= 6) {
         titleID = titleID + titleIDPost;
       }
 
-      titleID = titleIDPre + pad(titleID, 8)
+      titleID = titleIDPre + pad(titleID, 8);
     }
+
+    titleID = pad(titleID, 16);
     
     if($.inArray(titleID, apiTitleIds) > -1) {
       // Found Id
