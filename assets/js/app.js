@@ -4,7 +4,8 @@ $(document).ready(function() {
   var apiTitleIds = [];
   var apiTitles = [];
   var apiDevelopers = [];
-  var titleIDPre = "000400000";
+  var titleIDPre = "00040000";
+  var titleIDPost = "00";
   
   $.getJSON( apiUrl, function( data ) {
     
@@ -31,7 +32,7 @@ $(document).ready(function() {
   });
   
   function generateID() {
-    var randomID = titleIDPre + Math.random().toString(36).replace(/[^a-f0-9]+/g, '').substr(0, 7);
+    var randomID = titleIDPre + Math.random().toString(36).replace(/[^a-f1-9]+/g, '').substr(0, 2) + pad(Math.random().toString(36).replace(/[^a-f0-9]+/g, '').substr(0, 4), 4) + titleIDPost;
     
     if($.inArray(randomID, apiTitleIds) > -1) {
       // Found Id
@@ -54,5 +55,10 @@ $(document).ready(function() {
       // Found nothing
       $(".response_failed").slideDown();
     }
+  }
+  function pad(n, width, z) {
+    z = z || '0';
+    n = n + '';
+    return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
   }
 });
