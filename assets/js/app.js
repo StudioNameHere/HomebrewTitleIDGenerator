@@ -9,7 +9,7 @@ $(document).ready(function() {
   var apiTitleIds = [];
   var eShopTitleIds = {};
   var eShopPublishers = {};
-  var eShopLanguageBias = ["US", "GB", "JP", "HK", "KR"]
+  var eShopLanguageBias = ["US", "GB", "DE", "JP", "HK", "KR"]
   var apiTitles = [];
   var apiDevelopers = [];
   var titleIDPre = "00040000";
@@ -81,7 +81,29 @@ $(document).ready(function() {
       }
     }
   }
+  function displayNusInfo(titleID, language) {
+    $.getJSON(nusInfoBaseUrl + "titles/" + (titleID + "-" + language).toLowerCase() + ".json", function( data ) {
+      // Found Id
+      $(".foundAppTitle").text(data.name);
+      $(".foundAppDev").text(eShopPublishers[data.publisher.toString()].name[language]);
+      $(".foundAppImage").hide();
+      
+      // Show Box
+      $(".response_success").slideDown();
+    });
+  }
   function searchID(titleID) {
+    
+    titleID = parseInt(titleID, 16).toString(16).toUpperCase();
+    
+    if(titleID.length <= 8) {
+      
+      if(titleID.substr(-2) != titleIDPost) {
+        titleID = titleID + titleIDPost;
+      }
+
+      titleID = titleIDPre + pad(titleID, 8)
+    }
     
     if($.inArray(titleID, apiTitleIds) > -1) {
       // Found Id
@@ -92,31 +114,29 @@ $(document).ready(function() {
       // Show Box
       $(".response_success").slideDown();
 
-      return;
+      return true;
     }
 
     if($.inArray(titleID, Object.keys(eShopTitleIds)) > -1) {
-      // Found Id
+      var nusLanguageFound = false;
       $.each(eShopLanguageBias, function(key, language){
         if(eShopTitleIds[titleID].languages.indexOf(language) != -1) {
-          $.getJSON(nusInfoBaseUrl + "titles/" + (titleID + "-" + language).toLowerCase() + ".json", function( data ) {
-            // Found Id
-            $(".foundAppTitle").text(data.name);
-            $(".foundAppDev").text(eShopPublishers[data.publisher.toString()].name[language]);
-            $(".foundAppImage").hide();
-            
-            // Show Box
-            $(".response_success").slideDown();
-          });
+          nusLanguageFound = true;
+          displayNusInfo(titleID, language);
           return false;
         }
       })
 
-      return;
+      if(nusLanguageFound == false) {
+        displayNusInfo(titleID, eShopTitleIds[titleID].languages[Object.keys(eShopTitleIds[titleID].languages)[0]]);
+      }
+
+      return true;
     } 
     
     // Found nothing
     $(".response_failed").slideDown();
+    return false;
   }
   function pad(n, width, z) {
     z = z || '0';
