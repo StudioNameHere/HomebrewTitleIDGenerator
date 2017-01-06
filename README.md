@@ -7,6 +7,9 @@ https://premadegames.github.io/HomebrewTitleIDGenerator/
 ## API by
 * TitleDB.com
 
+## nus-info by
+* [DanTheMan827](https://github.com/DanTheMan827)
+
 ## Tools
 * Bootstrap Grid-Only
 * HTML5Doctors CSS Reset
