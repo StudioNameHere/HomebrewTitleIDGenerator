@@ -54,7 +54,8 @@ $(document).ready(function() {
     } else if (titleID.length === 16 
                && titleID.substring(0, 8) === "00040000"
                && titleID.substring(14) === "00"
-               && parseInt(titleID.substring(8, 14)) > 0x2FF) {
+               && parseInt(titleID.substring(8, 14)) > 0x2FF
+               && parseInt(titleID.substring(8, 14)) < 0xFF800) {
       $(".response_failed").slideDown();
     } else {
       $(".response_invalid").slideDown();
