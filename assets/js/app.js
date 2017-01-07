@@ -65,9 +65,9 @@ $(document).ready(function() {
     setLoadedBit(8);
   });
   
-  $("input[name='checkTitleID']").change(function() {
-    $(".response_failed, .response_success, .response_invalid").slideUp(function() {
-        searchID($("input[name='checkTitleID']").val().toUpperCase());
+  $("#checkID").click(function() {
+    $(".response").slideUp().promise().done(function() {
+      searchID($("input[name='checkTitleID']").val().toUpperCase());
     });
   });
   
@@ -95,7 +95,8 @@ $(document).ready(function() {
       $(".foundAppImage").hide();
       
       // Show Box
-      $(".response_success").slideDown();
+      if($(".response_success").is(":hidden"))
+        $(".response_success").slideDown();
     });
   }
 
@@ -150,7 +151,8 @@ $(document).ready(function() {
       $(".foundAppImage").attr("src", "https://api.titledb.com/images/" + titleID + ".png").show();
       
       // Show Box
-      $(".response_success").slideDown();
+      if($(".response_success").is(":hidden"))
+        $(".response_success").slideDown();
 
       return true;
     }
@@ -162,7 +164,8 @@ $(document).ready(function() {
       $(".foundAppImage").hide();
       
       // Show Box
-      $(".response_success").slideDown();
+      if($(".response_success").is(":hidden"))
+        $(".response_success").slideDown();
 
       return true;
     }
@@ -172,12 +175,15 @@ $(document).ready(function() {
                && titleID.substring(14) === "00"
                && parseInt(titleID.substring(8, 14), 16) >= titleIDMin
                && parseInt(titleID.substring(8, 14), 16) <= titleIDMax)) {
-      $(".response_invalid").slideDown();
+      
+      if($(".response_invalid").is(":hidden"))
+        $(".response_invalid").slideDown();
       return null;
     }
     
     // Found nothing
-    $(".response_failed").slideDown();
+    if($(".response_failed").is(":hidden"))
+      $(".response_failed").slideDown();
     return false;
   }
   
