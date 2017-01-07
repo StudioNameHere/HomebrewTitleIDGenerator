@@ -9,6 +9,12 @@
 * {
   font-family: 'Open Sans', sans-serif;
 }
+a {
+  color: #ff9800;
+}
+a:hover {
+  text-decoration: none;
+}
 /* STYLES */
 body {
   background: #d4d8de;
