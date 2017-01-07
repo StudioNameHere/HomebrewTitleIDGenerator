@@ -77,7 +77,7 @@ $(document).ready(function() {
   
   function generateID() {
     while(true) {
-      var gameID = pad(parseInt(Math.random() * (titleIDMax - titleIDMin + 1) + titleIDMin).toString(16).toUpperCase(), 5);
+      var gameID = pad(parseInt(Math.random() * (titleIDMax - titleIDMin + 1) + titleIDMin).toString(16).toUpperCase(), 6);
       var randomID = titleIDPre + gameID + titleIDPost;
       
       if(Object.keys(apiData).indexOf(randomID) == -1 && Object.keys(eShopData).indexOf(randomID) == -1) {
