@@ -12,7 +12,7 @@ $(document).ready(function() {
   var eShopPublishers = {}
   var titleIdListData = {};
   var eShopLanguageBias = ["US", "GB", "DE", "JP", "HK", "KR"]
-  var titleIDPre = "00040000";
+  var titleIDPre = "000400000";
   var titleIDPost = "00";
   var titleIDMax = 0xF7FFF;
   var titleIDMin = 0x300;
@@ -77,11 +77,11 @@ $(document).ready(function() {
   
   function generateID() {
     while(true) {
-      var gameID = pad(parseInt(Math.random() * (titleIDMax - titleIDMin + 1) + titleIDMin).toString(16).toUpperCase(), 6);
+      var gameID = pad(parseInt(Math.random() * (titleIDMax - titleIDMin + 1) + titleIDMin).toString(16).toUpperCase(), 5);
       var randomID = titleIDPre + gameID + titleIDPost;
       
       if(Object.keys(apiData).indexOf(randomID) == -1 && Object.keys(eShopData).indexOf(randomID) == -1) {
-        return randomID;
+        return titleIDPre + "<strong>" + gameID + "</strong>" + titleIDPost;
       } else {
         console && console.debug && console.debug("ID " + randomID + " exists.");
       }
