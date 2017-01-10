@@ -115,7 +115,7 @@ $(document).ready(function() {
         titleID = titleID + titleIDPost;
       }
 
-      titleID = titleIDPre + pad(titleID, 8);
+      titleID = titleIDPre.substr(0,8) + pad(titleID, 8);
     }
 
     titleID = pad(titleID, 16);
